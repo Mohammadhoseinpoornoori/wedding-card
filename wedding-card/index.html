@@ -6,19 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     @font-face {
-      font-family: "persian-khat-khati-02";
-      src: url("fonts/persian-khat-khati-02.ttf") format("truetype");
+      font-family: "font";
+      src: url("fonts/font.ttf") format("truetype");
     }
     body {
       direction: rtl;
-      font-family: "persian-khat-khati-02", serif;
+      font-family: "font", serif;
       color: #fff8e1;
       text-align: center;
       padding: 2rem;
       position: relative;
       z-index: 1;
-      overflow: hidden;
+      overflow-x: hidden;
     }
+
     .bg-grid {
       position: fixed;
       top: 0;
@@ -29,30 +30,78 @@
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
       z-index: -1;
+      pointer-events: none;
     }
+
     .bg-grid video {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
+
     h1, .info, .countdown, .gallery {
       transition: all 1s ease;
     }
-    h1 {
+
+    .ha1 {
       font-size: 4rem;
-      margin-bottom: 1.5rem;
+      margin-top: 0;
+      margin-bottom: -0.3rem;
     }
+
+    .ha2 {
+      font-size: 100px;
+      margin-top: 0;
+      margin-bottom: -0.3rem;
+    }
+
+    .ha3 {
+      font-size: 4rem;
+      margin-top: 0;
+      margin-bottom: -0.3rem;
+    }
+
+    .highlight {
+      padding: 5px 10px;
+      display: inline-block;
+      border-radius: 40px;
+      background: rgba(255, 255, 255, 0.096);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .highlight10 {
+      padding: 5px 10px;
+      display: inline-block;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.096);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .highlight30 {
+      padding: 5px 20px;
+      display: inline-block;
+      border-radius: 30px;
+      background: rgba(61, 19, 19, 0.068);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
     .info {
       font-size: 3rem;
       margin-bottom: 2rem;
     }
+
     .countdown {
       font-size: 4rem;
       margin-bottom: 1rem;
     }
+
     .map-button {
       margin-bottom: 2rem;
     }
+
     .map-button button, .map-back button {
       padding: 0.5rem 1.5rem;
       font-size: 1.2rem;
@@ -63,9 +112,11 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
+
     .map-button button:hover, .map-back button:hover {
       background-color: #ffe0b2;
     }
+
     .map-container {
       display: none;
       opacity: 0;
@@ -78,19 +129,23 @@
       width: 90%;
       max-width: 600px;
     }
+
     .map-container.show {
       display: block;
       opacity: 1;
     }
+
     .map-back {
       margin-top: 1rem;
     }
+
     iframe {
       border: 0;
       border-radius: 1rem;
       width: 100%;
       height: 300px;
     }
+
     .gallery {
       display: flex;
       flex-wrap: wrap;
@@ -98,20 +153,24 @@
       gap: 1rem;
       margin-top: 2rem;
     }
+
     .gallery img {
       width: 200px;
       height: auto;
       border-radius: 1rem;
       border: 2px solid #fff8e1;
     }
+
     audio {
       margin-top: 2rem;
       display: none;
     }
+
     .slide-out {
       opacity: 0;
       transform: translateX(-100%);
     }
+
     .slide-in {
       opacity: 1;
       transform: translateX(0);
@@ -120,40 +179,58 @@
 
     /* Responsive styles */
     @media (max-width: 768px) {
-      h1 {
+      .bg-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 25%);
+      }
+
+      .bg-grid video {
+        height: 100%;
+      }
+
+      .ha1, .ha3 {
         font-size: 2.5rem;
       }
-      .info {
+
+      .ha2 {
+        font-size: 3rem;
+      }
+
+      .info, .countdown {
         font-size: 2rem;
       }
-      .countdown {
-        font-size: 2rem;
-      }
+
       .map-button button, .map-back button {
         font-size: 1rem;
         padding: 0.4rem 1rem;
       }
+
       .gallery img {
         width: 150px;
       }
     }
 
     @media (max-width: 480px) {
-      h1 {
+      .ha1, .ha3 {
         font-size: 2rem;
       }
-      .info {
+
+      .ha2 {
+        font-size: 2.5rem;
+      }
+
+      .info, .countdown {
         font-size: 1.6rem;
       }
-      .countdown {
-        font-size: 1.6rem;
-      }
+
       .gallery img {
         width: 120px;
       }
+
       .map-container {
         height: auto;
       }
+
       iframe {
         height: 250px;
       }
@@ -176,30 +253,28 @@
     </video>
   </div>
 
-  <h1 id="header">با افتخار دعوت می‌کنیم</h1>
-  <div class="info" id="info">
-    به مراسم باشکوه پیوند مریم و محمدحسین <br>
-    در تاریخ ۲۳ اردیبهشت ۱۴۰۴
-  </div>
+  <h1 id="header" class="highlight ha1">اگر اتفاق ها به دنبال هم رقم نمیخورد، </h1><br>
+  <h1 class="highlight ha2"> و اگر خندیدن هایمان در هم گره نمیخورد ،</h1><br>
+  <h1 class="highlight ha3"> این چنین جهانمان زیبا نمیشد</h1><br>
 
-  <div class="countdown" id="countdown"></div>
+  <div class="info highlight10" id="info">
+    مهمان مان باشید در جشن پیمان مان<br>
+    در تاریخ ۲۳ اردیبهشت ۱۴۰۴ ساعت ۱۹ 
+  </div>
+  <br>
+
+  <div class="countdown highlight30" id="countdown"></div>
 
   <div class="map-button" id="map-button">
     <button onclick="showMap()">نمایش محل مراسم روی نقشه</button>
   </div>
 
   <div class="map-container" id="map-container">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3667.294449696857!2d49.709278958827454!3d37.29094152342964!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ff55e1415d589d7%3A0x75b897e841ffc1df!2z2KrYp9mE2KfYsSDYtdin2K3YqNiv2YTYp9mG!5e0!3m2!1sfa!2s!4v1744151912976!5m2!1sfa!2s" width="400" height="300" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3667.294449696857!2d49.709278958827454!3d37.29094152342964!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ff55e1415d589d7%3A0x75b897e841ffc1df!2z2KrYp9mE2KfYsSDYtdin2K3YqNiv2YTYp9mG!5e0!3m2!1sfa!2s!4v1744151912976!5m2!1sfa!2s" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     <div class="map-back">
       <button onclick="hideMap()">بازگشت</button>
     </div>
   </div>
-
-  <!-- <div class="gallery" id="gallery">
-    <img src="https://i.imgur.com/1.jpg" alt="عکس 1">
-    <img src="https://i.imgur.com/2.jpg" alt="عکس 2">
-    <img src="https://i.imgur.com/3.jpg" alt="عکس 3">
-  </div> -->
 
   <audio id="bg-music" autoplay loop>
     <source src="music/bg-music.mp3" type="audio/mpeg">
@@ -235,7 +310,8 @@
       document.getElementById("header").classList.add("slide-out");
       document.getElementById("info").classList.add("slide-out");
       document.getElementById("countdown").classList.add("slide-out");
-      document.getElementById("gallery").classList.add("slide-out");
+      const gallery = document.getElementById("gallery");
+      if (gallery) gallery.classList.add("slide-out");
     }
 
     function hideMap() {
@@ -244,7 +320,8 @@
       document.getElementById("header").classList.remove("slide-out");
       document.getElementById("info").classList.remove("slide-out");
       document.getElementById("countdown").classList.remove("slide-out");
-      document.getElementById("gallery").classList.remove("slide-out");
+      const gallery = document.getElementById("gallery");
+      if (gallery) gallery.classList.remove("slide-out");
     }
   </script>
 </body>
