@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>کارت عروسی مریم و محمدحسین</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @font-face {
+      font-family: "font";
+      src: url("fonts/font.ttf") format("truetype");
+    }
+    body {
+      direction: rtl;
+      font-family: "font", serif;
+      color: #fff8e1;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+      overflow-x: hidden;
+    }
+
+    .bg-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .bg-grid video {
+      flex: 1;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    h1, .info, .countdown, .gallery {
+      transition: all 1s ease;
+    }
+
+    .ha1 {
+      font-size: 4rem;
+      margin-top: 0;
+      margin-bottom: -0.3rem;
+    }
+
+    .ha2 {
+      font-size: 100px;
+      margin-top: 0;
+      margin-bottom: -0.3rem;
+    }
+
+    .ha3 {
+      font-size: 4rem;
+      margin-top: 0;
+      margin-bottom: -0.3rem;
+    }
+
+    .highlight {
+      padding: 5px 10px;
+      display: inline-block;
+      border-radius: 40px;
+      background: rgba(255, 255, 255, 0.096);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .highlight10 {
+      padding: 5px 10px;
+      display: inline-block;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.096);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .highlight30 {
+      padding: 5px 20px;
+      display: inline-block;
+      border-radius: 30px;
+      background: rgba(61, 19, 19, 0.068);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .info {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .countdown {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .map-button {
+      margin-bottom: 2rem;
+    }
+
+    .map-button button, .map-back button {
+      padding: 0.5rem 1.5rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 1rem;
+      background-color: #fff8e1;
+      color: #5e412f;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .map-button button:hover, .map-back button:hover {
+      background-color: #ffe0b2;
+    }
+
+    .map-container {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .map-container.show {
+      display: block;
+      opacity: 1;
+    }
+
+    .map-back {
+      margin-top: 1rem;
+    }
+
+    iframe {
+      border: 0;
+      border-radius: 1rem;
+      width: 100%;
+      height: 300px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .gallery img {
+      width: 200px;
+      height: auto;
+      border-radius: 1rem;
+      border: 2px solid #fff8e1;
+    }
+
+    audio {
+      margin-top: 2rem;
+      display: none;
+    }
+
+    .slide-out {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+
+    .slide-in {
+      opacity: 1;
+      transform: translateX(0);
+      transition: all 1s ease;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .ha1, .ha3 {
+        font-size: 2.5rem;
+      }
+
+      .ha2 {
+        font-size: 3rem;
+      }
+
+      .info, .countdown {
+        font-size: 2rem;
+      }
+
+      .map-button button, .map-back button {
+        font-size: 1rem;
+        padding: 0.4rem 1rem;
+      }
+
+      .gallery img {
+        width: 150px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ha1, .ha3 {
+        font-size: 2rem;
+      }
+
+      .ha2 {
+        font-size: 2.5rem;
+      }
+
+      .info, .countdown {
+        font-size: 1.6rem;
+      }
+
+      .gallery img {
+        width: 120px;
+      }
+
+      .map-container {
+        height: auto;
+      }
+
+      iframe {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid">
+    <video autoplay muted loop>
+      <source src="videos/video1.mp4" type="video/mp4">
+    </video>
+    <video autoplay muted loop>
+      <source src="videos/video2.mp4" type="video/mp4">
+    </video>
+    <video autoplay muted loop>
+      <source src="videos/video3.mp4" type="video/mp4">
+    </video>
+    <video autoplay muted loop>
+      <source src="videos/video4.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <h1 id="header" class="highlight ha1">اگر اتفاق ها به دنبال هم رقم نمیخورد، </h1><br>
+  <h1 class="highlight ha2"> و اگر خندیدن هایمان در هم گره نمیخورد ،</h1><br>
+  <h1 class="highlight ha3"> این چنین جهانمان زیبا نمیشد</h1><br>
+
+  <div class="info highlight10" id="info">
+    مهمان مان باشید در جشن پیمان مان<br>
+    در تاریخ ۲۳ اردیبهشت ۱۴۰۴ ساعت ۱۹ 
+  </div>
+  <br>
+
+  <div class="countdown highlight30" id="countdown"></div>
+
+  <div class="map-button" id="map-button">
+    <button onclick="showMap()">نمایش محل مراسم روی نقشه</button>
+  </div>
+
+  <div class="map-container" id="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3667.294449696857!2d49.709278958827454!3d37.29094152342964!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ff55e1415d589d7%3A0x75b897e841ffc1df!2z2KrYp9mE2KfYsSDYtdin2K3YqNiv2YTYp9mG!5e0!3m2!1sfa!2s!4v1744151912976!5m2!1sfa!2s" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="map-back">
+      <button onclick="hideMap()">بازگشت</button>
+    </div>
+  </div>
+
+  <audio id="bg-music" autoplay loop>
+    <source src="music/bg-music.mp3" type="audio/mpeg">
+    مرورگر شما از پخش موزیک پشتیبانی نمی‌کند.
+  </audio>
+
+  <script>
+    const weddingDate = new Date("2025-05-13T00:00:00").getTime();
+    const countdown = document.getElementById("countdown");
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdown.innerHTML = `تا مراسم: ${days} روز، ${hours} ساعت، ${minutes} دقیقه، ${seconds} ثانیه`;
+    }, 1000);
+
+    window.addEventListener("load", () => {
+      const audio = document.getElementById("bg-music");
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          document.body.addEventListener("click", () => audio.play(), { once: true });
+        });
+      }
+    });
+
+    function showMap() {
+      document.getElementById("map-container").classList.add("show");
+      document.getElementById("map-button").style.display = "none";
+      document.getElementById("header").classList.add("slide-out");
+      document.getElementById("info").classList.add("slide-out");
+      document.getElementById("countdown").classList.add("slide-out");
+      const gallery = document.getElementById("gallery");
+      if (gallery) gallery.classList.add("slide-out");
+    }
+
+    function hideMap() {
+      document.getElementById("map-container").classList.remove("show");
+      document.getElementById("map-button").style.display = "block";
+      document.getElementById("header").classList.remove("slide-out");
+      document.getElementById("info").classList.remove("slide-out");
+      document.getElementById("countdown").classList.remove("slide-out");
+      const gallery = document.getElementById("gallery");
+      if (gallery) gallery.classList.remove("slide-out");
+    }
+  </script>
+</body>
+</html>
